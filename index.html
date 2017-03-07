@@ -9,6 +9,23 @@
     <script src="js/pca10_svm.js"></script>
 </head>
 <body>
-    
+    <video id="camFeed" autoplay></video>
+
+    <script>
+        var video = document.querySelector('#camFeed');
+        navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.oGetUserMedia;
+
+        if (navigator.getUserMedia) {       
+            navigator.getUserMedia({video: true}, handleVideo, videoError);
+        }
+        
+        function handleVideo(stream) {
+            video.src = window.URL.createObjectURL(stream);
+        }
+        
+        function videoError(e) {
+            console.log('Error occured here: '+e.printStackTrace())
+        }
+    </script>
 </body>
 </html>
