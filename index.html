@@ -7,10 +7,22 @@
     <title>Face Detection Try</title>
     <script src="js/clmtrackr.js"></script>
     <script src="js/pca10_svm.js"></script>
+    <style>
+        #container {
+            position: relative;
+        }
+        #drawCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
 </head>
 <body>
-    <video id="camFeed" autoplay></video>
+    <div id="container">
+    <video id="camFeed" width="400" height="300" autoplay></video>
     <canvas id="drawCanvas" width="400" height="300"></canvas>
+    </div>
 
     <script>
         var video = document.querySelector('#camFeed');
