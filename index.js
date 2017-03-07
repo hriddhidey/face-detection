@@ -2,8 +2,8 @@
 
 var video = document.querySelector('#camFeed');
 navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.oGetUserMedia;
-var aviators = document.getElementById('aviators');
-console.log(aviators);
+// var aviators = document.getElementById('aviators');
+// console.log(aviators);
 
 if (navigator.getUserMedia) {       
     navigator.getUserMedia({video: true}, handleVideo, videoError);
