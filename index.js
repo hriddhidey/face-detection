@@ -38,14 +38,14 @@
     }
     positionLoop();
 
-    // var canvasInput = document.getElementById('drawCanvas');
-    // var cc = canvasInput.getContext('2d');
-    // function drawLoop() {
-    //     requestAnimationFrame(drawLoop);
-    //     cc.clearRect(0, 0, canvasInput.width, canvasInput.height);
-    //     ctracker.draw(canvasInput);
-    // }
-    // drawLoop();
+    var canvasInput = document.getElementById('drawCanvas');
+    var cc = canvasInput.getContext('2d');
+    function drawLoop() {
+        requestAnimationFrame(drawLoop);
+        cc.clearRect(0, 0, canvasInput.width, canvasInput.height);
+        ctracker.draw(canvasInput);
+    }
+    drawLoop();
 
 // }
 
