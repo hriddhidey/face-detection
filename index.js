@@ -21,6 +21,7 @@
     ctracker.start(video);
 
     function positionLoop() {
+        var t0 = performance.now();
         requestAnimationFrame(positionLoop);
         var positions = ctracker.getCurrentPosition();
         // positions = [[x_0, y_0], [x_1,y_1], ... ]
@@ -32,8 +33,8 @@
             }
             pText.innerHTML = positionString;
           }
-
-        
+          var t1 = performance.now();
+          console.log('positionLoop() took '+ (t1-t0) + 'time to work.')
     }
     positionLoop();
 
