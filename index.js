@@ -1,36 +1,41 @@
-var video = document.querySelector('#camFeed');
-navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.oGetUserMedia;
+document.onload(function(){
 
-if (navigator.getUserMedia) {       
-    navigator.getUserMedia({video: true}, handleVideo, videoError);
-}
+    var video = document.querySelector('#camFeed');
+    navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.oGetUserMedia;
 
-function handleVideo(stream) {
-    video.src = window.URL.createObjectURL(stream);
-}
+    if (navigator.getUserMedia) {       
+        navigator.getUserMedia({video: true}, handleVideo, videoError);
+    }
 
-function videoError(e) {
-    console.log('Error occured here: '+e.printStackTrace())
-}
+    function handleVideo(stream) {
+        video.src = window.URL.createObjectURL(stream);
+    }
 
-var ctracker = new clm.tracker();
-ctracker.init(pModel);
-ctracker.start(video);
+    function videoError(e) {
+        console.log('Error occured here: '+e.printStackTrace())
+    }
 
-function positionLoop() {
-    requestAnimationFrame(positionLoop);
-    var positions = ctracker.getCurrentPosition();
-    // positions = [[x_0, y_0], [x_1,y_1], ... ]
-    // do something with the positions ...
-}
-positionLoop();
+    var ctracker = new clm.tracker();
+    ctracker.init(pModel);
+    ctracker.start(video);
 
-var canvasInput = document.getElementById('drawCanvas');
-var cc = canvasInput.getContext('2d');
-function drawLoop() {
-    requestAnimationFrame(drawLoop);
-    cc.clearRect(0, 0, canvasInput.width, canvasInput.height);
-    ctracker.draw(canvasInput);
-}
-drawLoop();
+    function positionLoop() {
+        requestAnimationFrame(positionLoop);
+        var positions = ctracker.getCurrentPosition();
+        // positions = [[x_0, y_0], [x_1,y_1], ... ]
+        // do something with the positions ...
+    }
+    positionLoop();
+
+    var canvasInput = document.getElementById('drawCanvas');
+    var cc = canvasInput.getContext('2d');
+    function drawLoop() {
+        requestAnimationFrame(drawLoop);
+        cc.clearRect(0, 0, canvasInput.width, canvasInput.height);
+        ctracker.draw(canvasInput);
+    }
+    drawLoop();
+
+})
+
 
