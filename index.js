@@ -1,4 +1,4 @@
-document.onload=function(){
+// document.onload=function(){
 
     var video = document.querySelector('#camFeed');
     navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.oGetUserMedia;
@@ -36,6 +36,6 @@ document.onload=function(){
     }
     drawLoop();
 
-}
+// }
 
 
